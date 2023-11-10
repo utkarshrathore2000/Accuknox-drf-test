@@ -20,6 +20,12 @@ class SignUpSerializer(serializers.ModelSerializer):
             "last_name": {"required": True, "allow_blank": False},
         }
 
+    def validate_email(self , value):
+        user = User.objects.filter(email=value.lower())
+        if user:
+            raise serializers.ValidationError("User with this email address already exists")
+        return value
+
     def create(self, validated_data):
         email = validated_data.get("email")
         password = validated_data.get("password")
