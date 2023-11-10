@@ -10,10 +10,19 @@ This is a full-stack social networking platform built with Django, providing ess
 3. Create a .env file from the .env.example file <br>
 ```cp .env.example .env```
 
-Modify the variables in `.env` file:
+4. Modify the variables in `.env` file:
 - Replace the <POSTGRES_NAME>(database name) with yours 
 - Replace the <POSTGRES_USER> with yours 
-- Replace the <POSTGRES_PASSWORD_> with yours 
+- Replace the <POSTGRES_PASSWORD_> with yours
+- 
+5.  Make a build <br>
+```make build```
+
+6.  Create a migrations file <br>
+``` make makemigrations ```
+
+7.  Apply the migrations <br>
+``` make migrate```
 
 5. Run your server <br>
 ```make runserver```

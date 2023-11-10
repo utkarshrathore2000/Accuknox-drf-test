@@ -28,9 +28,21 @@ shell:
 	@echo -e "$(CYAN)Starting Bash in the django container:$(COFF)"
 	@docker-compose run --rm django bash
 
+build:
+	@echo -e "$(CYAN)Creating Docker images:$(COFF)"
+	@docker-compose build
+
+makemigrations:
+	@echo -e "$(CYAN)Running django makemigrations:$(COFF)"
+	@docker-compose run --rm django ./manage.py makemigrations $(cmd)
+
+migrate:
+	@echo -e "$(CYAN)Running django migrations:$(COFF)"
+	@docker-compose run --rm django ./manage.py migrate $(cmd)
+
 runserver:
 	@echo -e "$(CYAN)Starting Docker container with the app.$(COFF)"
-	@docker-compose up --build
+	@docker-compose up
 	@echo -e "$(CYAN)App ready and listening at http://127.0.0.1:8000.$(COFF)"
 
 runserver-d:
