@@ -39,7 +39,7 @@ makemigrations:
 migrate:
 	@echo -e "$(CYAN)Running django migrations:$(COFF)"
 	@docker-compose run --rm django ./manage.py migrate $(cmd)
-
+	
 runserver:
 	@echo -e "$(CYAN)Starting Docker container with the app.$(COFF)"
 	@docker-compose up
@@ -56,3 +56,7 @@ down:
 
 down-v:
 	@docker-compose down --volume
+
+test:
+	@echo -e "$(CYAN)Run test cases:$(COFF)"
+	@docker-compose run --rm django ./manage.py test $(cmd)

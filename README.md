@@ -28,3 +28,5 @@ This is a full-stack social networking platform built with Django, providing ess
 ```make runserver```
 
    
+## How to run the test cases
+``` make test```
