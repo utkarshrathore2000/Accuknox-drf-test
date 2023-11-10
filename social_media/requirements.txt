@@ -1,4 +1,8 @@
 # django
 django==4.1.1
+python-dotenv==0.21.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.0
+
+# db-tools
+psycopg2-binary==2.8.4
