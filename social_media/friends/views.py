@@ -20,14 +20,14 @@ class GetUserListView(ListAPIView):
             query:CharField
     """
 
-    def get(self , request , *args , **kwargs):
+    def get(self, request, *args, **kwargs):
         user_qs = UserFilterSet(
             request.GET,
-            queryset=User.objects.all().order_by("-id") ,
+            queryset=User.objects.all().order_by("-id"),
         )
         page = self.paginate_queryset(user_qs.qs)
         if page is not None:
-            serializer = UserListSerializer(page , many=True)
+            serializer = UserListSerializer(page, many=True)
             return self.get_paginated_response(serializer.data)
-        serializer = UserListSerializer(user_qs.qs , many=True)
-        return Response(serializer.data , status=HTTP_200_OK)
+        serializer = UserListSerializer(user_qs.qs, many=True)
+        return Response(serializer.data, status=HTTP_200_OK)
