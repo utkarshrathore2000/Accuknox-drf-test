@@ -1,6 +1,7 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK
+from rest_framework.permissions import IsAuthenticated
 from .filters import UserFilterSet
 from .serializers import UserListSerializer
 
@@ -12,8 +13,10 @@ User = get_user_model()
 
 
 class GetUserListView(ListAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = UserListSerializer
     pagination_class = PageNumberPagination
+
     __doc__ = """
         This api is used to return the list of user also we can search the user via first_name and email
         query_param:
@@ -21,6 +24,7 @@ class GetUserListView(ListAPIView):
     """
 
     def get(self, request, *args, **kwargs):
+        print(request.user.email)
         user_qs = UserFilterSet(
             request.GET,
             queryset=User.objects.all().order_by("-id"),
