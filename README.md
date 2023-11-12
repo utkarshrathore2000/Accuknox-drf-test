@@ -18,13 +18,7 @@ This is a full-stack social networking platform built with Django, providing ess
 5.  Make a build <br>
 ```make build```
 
-6.  Create a migrations file <br>
-``` make makemigrations ```
-
-7.  Apply the migrations <br>
-``` make migrate```
-
-5. Run your server <br>
+6. Run your server <br>
 ```make runserver```
 
    
