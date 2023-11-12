@@ -1,0 +1,280 @@
+{
+	"info": {
+		"_postman_id": "90efe72a-7a40-4880-b6d0-d596d29633c5",
+		"name": "social_media",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ram@gmail.com\",\n    \"password\": \"admin\",\n    \"first_name\":\"ram\",\n    \"last_name\":\"rathore\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/auth/sign-up/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"auth",
+								"sign-up",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ram@gmail.com\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/auth/api/token/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "friend",
+			"item": [
+				{
+					"name": "Get User List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2MjYxLCJpYXQiOjE2OTk3MTk4NjEsImp0aSI6ImJkODM5ZDNiM2JlMDRlOTNiNjJiYTg5YmE4NGY4NDJlIiwidXNlcl9pZCI6MX0.Zz0CfG6i35G5UuOr8BTEdSXz8qNfIs72eXc3fUJj4Jw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5Nzc3Mzk4LCJpYXQiOjE2OTk2OTA5ODAsImp0aSI6ImNmZGUxZjdjZTBjZTRmYWM4NzUyZjRhYzgxYmJmMzU3IiwidXNlcl9pZCI6MX0.U0agkUuyhat-IzFtUh8Wzm54x1S3SdWk-cDRsMbnDyI",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{api_host}}/get-user-list/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"get-user-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Friend List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2MjYxLCJpYXQiOjE2OTk3MTk4NjEsImp0aSI6ImJkODM5ZDNiM2JlMDRlOTNiNjJiYTg5YmE4NGY4NDJlIiwidXNlcl9pZCI6MX0.Zz0CfG6i35G5UuOr8BTEdSXz8qNfIs72eXc3fUJj4Jw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/get-friend-list/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"get-friend-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Friend Request List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2NDgxLCJpYXQiOjE2OTk3MjAwODEsImp0aSI6ImRlOTc0YzU4ODM5MDQ4NDdhMGYwOWYyYWVmNjg5NDA1IiwidXNlcl9pZCI6NH0.33PE0AYGyt9UFSJgXUnedyKcLXccU1h5PiVITp00Cnc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}/get-friend-request-list/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"get-friend-request-list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Friend Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2MjYxLCJpYXQiOjE2OTk3MTk4NjEsImp0aSI6ImJkODM5ZDNiM2JlMDRlOTNiNjJiYTg5YmE4NGY4NDJlIiwidXNlcl9pZCI6MX0.Zz0CfG6i35G5UuOr8BTEdSXz8qNfIs72eXc3fUJj4Jw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receiver\":5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/send-friend-request/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"send-friend-request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Friend Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2NDAyLCJpYXQiOjE2OTk3MjAwMDIsImp0aSI6IjZhYmZmODk0Y2NiNDRiMjFiOTFiMTM0MzM3ZmY2YjczIiwidXNlcl9pZCI6M30.BccALsWPjrg4_qc1AybvsLO2s1lbHmtHYUNiYYK8CPI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"accepted\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/accept-friend-request/2/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"accept-friend-request",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Friend Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5ODA2NDgxLCJpYXQiOjE2OTk3MjAwODEsImp0aSI6ImRlOTc0YzU4ODM5MDQ4NDdhMGYwOWYyYWVmNjg5NDA1IiwidXNlcl9pZCI6NH0.33PE0AYGyt9UFSJgXUnedyKcLXccU1h5PiVITp00Cnc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"rejected\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_host}}/reject-friend-request/3/",
+							"host": [
+								"{{api_host}}"
+							],
+							"path": [
+								"reject-friend-request",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
