@@ -14,6 +14,7 @@ class FriendsAPITests(APITestCase):
         self.user1 = User.objects.create(email='user1@gmail.com', username='user1', password='password1')
         self.user2 = User.objects.create(email='user2@gmail.com', username='user2', password='password2')
         self.user3 = User.objects.create(email='user3@gmail.com', username='user3', password='password3')
+        self.user4 = User.objects.create(email='user4@gmail.com', username='user4', password='password4')
 
         # Create a friend request from user1 to user2
         self.friend1 = Friends.objects.create(sender=self.user1, receiver=self.user2, status='pending')
@@ -33,7 +34,7 @@ class FriendsAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check that the response data matches the serialized user list
-        serialized_data = UserListSerializer(User.objects.all(), many=True).data
+        serialized_data = UserListSerializer(User.objects.exclude(id=self.user1.id), many=True).data
         self.assertEqual(len(response.json().get("results")), len(serialized_data))
 
     def test_get_user_list_with_search_query(self):
@@ -79,7 +80,7 @@ class FriendsAPITests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Check that the response data contains the expected data for pending friend requests
-        expected_data = FriendSerializer(Friends.objects.get(sender=self.user1, receiver=self.user2)).data
+        expected_data = FriendSerializer(Friends.objects.filter(status='pending'), many=True).data
         self.assertEqual(len(response.json()['results']), len(expected_data))
 
     def test_send_friend_request(self):
@@ -87,14 +88,14 @@ class FriendsAPITests(APITestCase):
         self.client.force_authenticate(self.user1)
 
         # Create a friend request to user2
-        data = {'receiver': self.user2.id}
+        data = {'receiver': self.user4.id}
         response = self.client.post(reverse('send-friend-request'), data)
 
         # Check that the response status code is 201 Created
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Check that the response data contains the expected data
-        expected_data = FriendSerializer(Friends.objects.get(sender=self.user1, receiver=self.user2)).data
+        expected_data = FriendSerializer(Friends.objects.get(sender=self.user1, receiver=self.user4)).data
         self.assertEqual(response.data, expected_data)
 
     def test_accept_friend_request(self):
