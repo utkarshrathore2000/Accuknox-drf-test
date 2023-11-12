@@ -152,6 +152,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,  # Set the number of items per page
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '3/minute',  # 3 requests per minute
+    },
 }
 
 
@@ -160,4 +163,3 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": True
 }
-
